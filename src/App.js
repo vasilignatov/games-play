@@ -10,24 +10,36 @@ import Details from './components/Details.js';
 import Edit from './components/Edit.js';
 import ErrorPage from './components/404.js';
 
-
-
 function App() {
 
   const [page, setPage] = useState('/home');
 
-  const routes = {
-    '/home': <Home />,
-    '/games': <Catalog />,
-    '/create': <Create />,
-    '/login': <Login />,
-    '/register': <Register />,
-    '/details': <Details />
-  }
-
   const navigationChangeHandler = (path) => {
     setPage(path);
   }
+
+  const router = (path) => {
+    const result = path.split('/');
+    
+    const rootPath = result[1];
+    const argument = result[2];
+
+    console.log(argument);
+
+    const routes = {
+      'home': <Home />,
+      'games': <Catalog navigationChangeHandler={navigationChangeHandler} />,
+      'create': <Create />,
+      'login': <Login />,
+      'register': <Register />,
+      'details': <Details id={argument}/>
+    }
+
+    return routes[rootPath];
+  }
+
+
+
 
   return (
     <div id="box">
@@ -35,8 +47,8 @@ function App() {
       <Header navigationChangeHandler={navigationChangeHandler} />
 
       <main id="main-content">
-        {routes[page] || <ErrorPage>Page Not Found!</ErrorPage>}
-      </main>  
+        {router(page) || <ErrorPage>Page Not Found!</ErrorPage>}
+      </main>
 
     </div>
   );
