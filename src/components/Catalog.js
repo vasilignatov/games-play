@@ -1,37 +1,25 @@
+import { useEffect, useState } from 'react';
+import CatalogGameCard from './CatalogGamesCard.js';
+
 const Catalog = () => {
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3030/data/games?sortBy=_createdOn%20desc')
+            .then(res => res.json())
+            .then(setGames);
+    }, []);
+
+
     return (
         <section id="catalog-page">
             <h1>All Games</h1>
-            {/* <!-- Display div: with information about every game (if any) --> */}
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="/images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>Cover Fire</h2>
-                    <a href="#" className="details-button">Details</a>
-                </div>
 
-            </div>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="/images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>Zombie lang</h2>
-                    <a href="#" className="details-button">Details</a>
-                </div>
+            { games.length > 0
+                ? games.map(g => <CatalogGameCard key={g._id} game={g} />)
+                : <h3 className="no-articles">No games yet</h3>
+            }
 
-            </div>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="/images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>MineCraft</h2>
-                    <a href="#" className="details-button">Details</a>
-                </div>
-            </div>
-
-            {/* <!-- Display paragraph: If there is no games  --> */}
-            <h3 className="no-articles">No articles yet</h3>
         </section>
     )
 }

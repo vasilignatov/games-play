@@ -17,7 +17,7 @@ export default function Header({
                 <a href="/games">All games</a>
 
                 <div id="user">
-                    <a href="/create-game">Create Game</a>
+                    <a href="/create">Create Game</a>
                     <a href="/logout">Logout</a>
                 </div>
 
