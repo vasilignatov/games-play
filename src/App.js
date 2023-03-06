@@ -20,19 +20,19 @@ function App() {
 
   const router = (path) => {
     const result = path.split('/');
-    
+
     const rootPath = result[1];
     const argument = result[2];
 
     console.log(argument);
 
     const routes = {
-      'home': <Home />,
+      'home': <Home navigationChangeHandler={navigationChangeHandler} />,
       'games': <Catalog navigationChangeHandler={navigationChangeHandler} />,
       'create': <Create />,
       'login': <Login />,
       'register': <Register />,
-      'details': <Details id={argument}/>
+      'details': <Details id={argument} />
     }
 
     return routes[rootPath];
