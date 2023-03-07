@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Route, } from 'react-router-dom';
 
 import Header from './components/Header.js';
 import Home from './components/Home.js';
@@ -47,6 +48,7 @@ function App() {
       <Header navigationChangeHandler={navigationChangeHandler} />
 
       <main id="main-content">
+        
         {router(page) || <ErrorPage>Page Not Found!</ErrorPage>}
       </main>
 
