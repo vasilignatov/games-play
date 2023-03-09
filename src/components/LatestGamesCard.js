@@ -1,3 +1,5 @@
+import React from 'react';
+
 const LatestGamesCard = ({
     game,
     navigationChangeHandler
@@ -17,6 +19,7 @@ const LatestGamesCard = ({
             <div className="rating">
                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
             </div>
+            
             <div className="data-buttons">
                 <a
                     href={game._id}

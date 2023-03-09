@@ -1,3 +1,4 @@
+import React from 'react';
 const Edit = () => {
     return (
         <section id="edit-page" className="auth">

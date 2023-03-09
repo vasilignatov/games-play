@@ -1,3 +1,4 @@
+import React from 'react';
 const Create = () => {
   return (
     <section id="create-page" className="auth">

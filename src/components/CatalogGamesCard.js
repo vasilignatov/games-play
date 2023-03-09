@@ -1,3 +1,5 @@
+import React, { Component }  from 'react';
+
 const CatalogGameCard = ({
     game,
     navigationChangeHandler

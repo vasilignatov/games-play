@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import CatalogGameCard from './CatalogGamesCard.js';
 import * as gameService from '../services/gameService.js';
-
+import React from 'react';
 const Catalog = ({ navigationChangeHandler }) => {
 
     const [games, setGames] = useState([]);
