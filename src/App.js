@@ -1,5 +1,6 @@
+import React from 'react';
 import { useState } from 'react';
-import { Route, } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header.js';
 import Home from './components/Home.js';
@@ -12,44 +13,21 @@ import Edit from './components/Edit.js';
 import ErrorPage from './components/404.js';
 
 function App() {
-
-  const [page, setPage] = useState('/home');
-
-  const navigationChangeHandler = (path) => {
-    setPage(path);
-  }
-
-  const router = (path) => {
-    const result = path.split('/');
-
-    const rootPath = result[1];
-    const argument = result[2];
-
-    console.log(argument);
-
-    const routes = {
-      'home': <Home navigationChangeHandler={navigationChangeHandler} />,
-      'games': <Catalog navigationChangeHandler={navigationChangeHandler} />,
-      'create': <Create />,
-      'login': <Login />,
-      'register': <Register />,
-      'details': <Details id={argument} />
-    }
-
-    return routes[rootPath];
-  }
-
-
-
-
   return (
     <div id="box">
 
-      <Header navigationChangeHandler={navigationChangeHandler} />
+      <Header />
 
       <main id="main-content">
-        
-        {router(page) || <ErrorPage>Page Not Found!</ErrorPage>}
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/home' exact component={Home} />
+          <Route path='/games' component={Catalog} />
+          <Route path='/create' component={Create} />
+          <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
+        </Switch>
+
       </main>
 
     </div>
