@@ -3,9 +3,7 @@ import { getLatest } from '../services/gameService.js';
 import LatestGamesCard from './LatestGamesCard.js';
 import React from 'react';
 
-export default function Home({
-    navigationChangeHandler,
-}) {
+export default function Home() {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
@@ -29,8 +27,7 @@ export default function Home({
 
                 {
                     games.length > 0
-                        ? games.map(g => <LatestGamesCard
-                            navigationChangeHandler={navigationChangeHandler} key={g._id} game={g} />)
+                        ? games.map(g => <LatestGamesCard key={g._id} game={g} />)
                         : <p className="no-articles">No games yet</p>
                 }
 

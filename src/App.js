@@ -21,11 +21,11 @@ function App() {
       <main id="main-content">
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/home' exact component={Home} />
-          <Route path='/games' component={Catalog} />
+          <Route path='/games' exact component={Catalog} />
           <Route path='/create' component={Create} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
+          <Route path='/games/:id' component={Details} />
         </Switch>
 
       </main>
