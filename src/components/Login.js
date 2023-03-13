@@ -1,9 +1,18 @@
 import React from 'react';
 
-const Login = () => {
+const Login = ({
+    history
+}) => {
+
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+
+        history.push('/games');
+    }
+
     return (
         <section id="login-page" className="auth">
-            <form id="login">
+            <form id="login" onClick={onFormSubmit}>
 
                 <div className="container">
                     <div className="brand-logo"></div>

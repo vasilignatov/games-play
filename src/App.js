@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header.js';
 import Home from './components/Home.js';
@@ -26,6 +25,17 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route path='/games/:id' component={Details} />
+          <Route path='/custom'>
+            <h2>Custom Page</h2>
+            <p>Lorem ipsum dolor sit amet</p>
+          </Route>
+
+          <Route path='/logout' render={(props) => {
+            console.log('Logged out!!!');
+            console.log(props);
+
+            return <Redirect to='/' />
+          }} />
         </Switch>
 
       </main>
